@@ -28,13 +28,40 @@
   justify-content: flex-start;
   padding: .3em 1em;
 }
+.routes-container {
+  justify-content: center;
+  margin-top: 12px;
+  width: 50%;
+}
+.save-button {
+  background: #FF974D;
+  border-radius: 5px;
+  border: 0;
+  width: 80px;
+  height: 50px;
+  font-size: 25;
+  margin: 3px;
+}
 .color-dark {
   background: #2885C4;
 }
 .color-light {
   background: #57B3F1;
 }
-input.find-button {
+.routes-list {
+  display: flex;
+  flex-direction: column;
+}
+.name-grade {
+  margin: 2px;
+}
+.route-description {
+  background-color: #2E9Ce6;
+  border-radius: 5px;
+
+}
+
+.find-button {
   margin-bottom: 1em;
   background: #FF974D;
   width: 180px;
@@ -49,22 +76,4 @@ input.txt {
   width: 80%;
   margin-bottom: 2em;
   border-radius: 5px;
-}
-input.btn {
-  border: 0;
-  display: block;
-  padding: 1em 3em;
-  background: #A5F883;
-  color: #003A61;
-  margin-bottom: 1em;
-  font-family: 'Comfortaa', 'Arial';
-  cursor: pointer;
-}
-.life-container {
-  display: flex;
-  align-items: center;
-  background: #3FA0E1;
-  padding: .5em;
-  font-weight: bold;
-  cursor: pointer;
 }
