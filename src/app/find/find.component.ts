@@ -12,10 +12,13 @@ export class FindComponent implements OnInit {
   buttonText: string = 'find routes'
   location: string = ''
   minDifficulty: string = ''
+  count: number = 0
   maxDifficulty: string = ''
   distance: string = ''
   posts: any
   routes: array = []
+  newProject: object = {}
+  savedRoutes: array = []
   readonly ROOT_URL = ``
 
 
@@ -30,12 +33,11 @@ export class FindComponent implements OnInit {
     .subscribe(
       (data:any[]) => {
         this.routes = []
-        for (let i = 0; i < 4; i++) {
+        for (let i = 0; i < 1; i++) {
             let num = this.getRandom(data.routes.length + 1)
             data.routes.splice(num, 1)
             this.routes.push(data.routes[num])
         }
-        console.log(this.routes)
       }
     )
   }
@@ -53,6 +55,14 @@ export class FindComponent implements OnInit {
   getLocation(event: any){
     this.location = event.target.value
   }
+  addRoute(event: any){
+    this.newProject.name = this.routes[0].name
+    this.newProject.grade = this.routes[0].rating
+    console.log(this.newProject)
+    this.savedRoutes.push(this.newProject)
+    localStorage.setItem(1, JSON.stringify(this.savedRoutes))
+  }
+
 
   ngOnInit() {
   }
