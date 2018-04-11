@@ -9,15 +9,32 @@
   justify-content: flex-start;
   background: #2F86C2;
   border-radius: 5px;
-  height: 50px;
+  height: 75px;
  }
 .remove-button {
-   margin-left: 10px; 
+   margin-left: 10px;
    justify-content: flex-end;
    background: #5FB5ED;
    border: 0;
    color: #fff;
    border-radius: 2px;
+ }
+ .clear-list {
+   display: flex;
+   justify-content: center;
+   margin-right: 70px;
+   margin-bottom: 15px;
+
+ }
+ .clear-all {
+   background: #2F86C2;
+   border: 0;
+   height: 40px;
+   width: 120px;
+   border-radius: 5px;
+   color: #fff;
+   font-family: "Comfortaa";
+   font-size: 18px;
  }
 .route-description {
   margin-left: 10px;
