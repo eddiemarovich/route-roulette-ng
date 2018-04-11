@@ -1,12 +1,15 @@
-.header {
+.container {
   background-color: #5BB4EF;
 }
-// .find-routes {
-//   height: 40px;
-//   width: 80px;
-//   background: 'black';
-// }
+ h1 {
+  margin-top: 5px;
+  margin-left: 8px;
+
+}
+.container ul {
+  margin-left: 8px;
+}
 ul li{
   background-color: #5BB4EF;
-
+  border-radius: 5px;
 }

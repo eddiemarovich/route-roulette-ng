@@ -1,5 +1,10 @@
 <div class="list-of-routes">
   <ul *ngFor= "let route of routeList">
-    <li>{{route | json}}</li>
+    <li>
+      <button class= 'remove-button' (click)= "removeRoute()" >X</button>
+      <div class="route-description">
+        {{route.name }} {{route.grade}}<br> <a href="{{route.url}}" target="_blank">{{route.url}}</a>
+      </div>
+    </li>
   </ul>
 </div>

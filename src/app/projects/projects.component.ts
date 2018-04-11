@@ -7,11 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProjectsComponent implements OnInit {
   routeObj: object = {}
-  tempRouteName: string = ''
-  tempRouteGrade: string = ''
-  tempRouteUrl: string = ''
   routeList: array = []
   constructor() { }
+
+  removeRoute(i){
+    
+  }
 
 
 
@@ -19,11 +20,7 @@ export class ProjectsComponent implements OnInit {
     for (let key in localStorage){
       if (key % 2 == 0 || key % 2 == 1){
         this.routeObj[key] = JSON.parse(localStorage[key])
-        console.log('routeObj: ', this.routeObj[key][0])
-        this.tempRouteName = this.routeObj[key][0].name
-        this.tempRouteGrade = this.routeObj[key][0].grade
-        this.tempRouteUrl = this.routeObj[key][0].url
-        this.routeList.push(this.tempRouteName, this.tempRouteGrade, this.tempRouteUrl)
+        this.routeList.push(this.routeObj[key][0])
       }
     }
   }
