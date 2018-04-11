@@ -1,9 +1,12 @@
+<div class="clear-list">
+  <button class="clear-all" type= "button" (click)= "removeRoute()" >remove all</button>
+</div>
 <div class="list-of-routes">
   <ul *ngFor= "let route of routeList">
     <li>
-      <button class= 'remove-button' (click)= "removeRoute()" >X</button>
+      <button class= "remove-button ">X</button>
       <div class="route-description">
-        {{route.name }} {{route.grade}}<br> <a href="{{route.url}}" target="_blank">{{route.url}}</a>
+        {{route.name }} {{route.grade}}<br><a href="{{route.url}}" target="_blank">{{route.url}}</a>
       </div>
     </li>
   </ul>

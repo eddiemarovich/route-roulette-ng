@@ -1,6 +1,17 @@
 .parent-container {
   display: flex;
   flex-wrap: wrap;
+  width: 97.5%;
+
+}
+.map-container {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+agm-map {
+  height: 300px;
+  width: 400px;
 }
 .container {
   display: flex;
@@ -14,6 +25,7 @@
   justify-content: flex-start;
   align-items: center;
   padding: 15px;
+
 }
 .criteria {
   border: 0;
@@ -31,7 +43,7 @@
 .routes-container {
   justify-content: center;
   margin-top: 12px;
-  width: 50%;
+  margin-left: 10px;
 }
 .save-button {
   background: #2885C4;
@@ -55,10 +67,12 @@
 }
 .name-grade {
   margin: 2px;
+  margin-left: 5px;
 }
 .route-description {
   background-color: #2E9Ce6;
   border-radius: 5px;
+  width: 80vh;
 
 }
 
@@ -70,7 +84,8 @@
   height: 55px;
   border-radius: 5px;
   border: 0;
-  font-size: 28px;
+  font-size: 26px;
+  font-family: "Comfortaa"
 }
 input.txt {
   border: 0;

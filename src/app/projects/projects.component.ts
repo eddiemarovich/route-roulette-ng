@@ -11,7 +11,7 @@ export class ProjectsComponent implements OnInit {
   constructor() { }
 
   removeRoute(i){
-    
+
   }
 
 

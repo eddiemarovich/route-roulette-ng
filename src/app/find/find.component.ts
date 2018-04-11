@@ -9,19 +9,26 @@ import { HttpClient } from '@angular/common/http'
 })
 export class FindComponent implements OnInit {
 
-
+  apiKey: string = '111877272-0be5e5bf0133d67a6e691eb8772a4fde'
+  url: string = 'https://www.mountainproject.com/data/get-routes-for-lat-lon?lat='
   buttonText: string = 'find routes'
   count: number = 0
   location: string = ''
-  minDifficulty: string = ''
-  maxDifficulty: string = ''
-  distance: string = ''
+  minDifficulty: string = '5.12'
+  maxDifficulty: string = '5.12'
+  distance: string = '20'
   posts: any
   routes: array = []
   newProject: object = {}
   savedRoutes: array = []
   maxKey: number = 0
   localStorageKeyArray: array = []
+  title: string = 'My first AGM project';
+  latString: string = '-105.25'
+  lngString: string = '40.03'
+  lng: number = -105.25
+  lat: number = 40.03
+
   readonly ROOT_URL = ``
 
 
@@ -32,6 +39,9 @@ export class FindComponent implements OnInit {
   }
 
   getRoutes() {
+
+    this.ROOT_URL = `${this.url}${this.latString}&lon=${this.lngString}&maxDistance=${this.distance}&minDiff=${this.minDifficulty}&maxDiff=${this.maxDifficulty}&key=${this.apiKey}`
+    console.log(this.ROOT_URL)
     this.posts = this.http.get(this.ROOT_URL)
     .subscribe(
       (data:any[]) => {
@@ -44,19 +54,21 @@ export class FindComponent implements OnInit {
       }
     )
   }
+
   getMinDifficulty(event: any){
     this.minDifficulty = event.target.value
-    this.ROOT_URL = `https://www.mountainproject.com/data/get-routes-for-lat-lon?lat=40.03&lon=-105.25&maxDistance=10&minDiff=${this.minDifficulty}&maxDiff=${this.maxDifficulty}&key=107143844-3f7ee1e2a5799e05b02d6b0ec7eb6d66`
   }
   getMaxDifficulty(event: any){
     this.maxDifficulty = event.target.value
-    this.ROOT_URL = `https://www.mountainproject.com/data/get-routes-for-lat-lon?lat=40.03&lon=-105.25&maxDistance=10&minDiff=${this.minDifficulty}&maxDiff=${this.maxDifficulty}&key=107143844-3f7ee1e2a5799e05b02d6b0ec7eb6d66`
   }
   getDistance(event: any){
     this.distance = event.target.value
   }
-  getLocation(event: any){
-    this.location = event.target.value
+  onChooseLocation(event){
+    this.latString = event.coords.lat
+    this.lngString = event.coords.lng
+    this.lat = parseFloat(event.coords.lat)
+    this.lng = parseFloat(event.coords.lng)
   }
 
   addRoute(event: any){
