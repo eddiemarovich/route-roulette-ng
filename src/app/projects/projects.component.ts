@@ -6,15 +6,24 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./projects.component.scss']
 })
 export class ProjectsComponent implements OnInit {
-
-  routeList: object = {}
-
+  routeObj: object = {}
+  tempRouteName: string = ''
+  tempRouteGrade: string = ''
+  tempRouteUrl: string = ''
+  routeList: array = []
   constructor() { }
 
+
+
   ngOnInit() {
-      this.routeList = JSON.parse(localStorage.getItem(1, {}))
-      console.log(this.routeList)
-
+    for (let key in localStorage){
+      if (key % 2 == 0 || key % 2 == 1){
+        this.routeObj[key] = JSON.parse(localStorage[key])
+        console.log('routeObj: ', this.routeObj[key][0])
+        this.tempRouteName = this.routeObj[key][0].name
+        this.tempRouteGrade = this.routeObj[key][0].grade
+        this.tempRouteUrl = this.routeObj[key][0].url
+        this.routeList.push(this.tempRouteName, this.tempRouteGrade, this.tempRouteUrl)
+      }
+    }
   }
-
-}

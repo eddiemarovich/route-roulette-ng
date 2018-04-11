@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 
 
@@ -9,16 +9,19 @@ import { HttpClient } from '@angular/common/http'
 })
 export class FindComponent implements OnInit {
 
+
   buttonText: string = 'find routes'
+  count: number = 0
   location: string = ''
   minDifficulty: string = ''
-  count: number = 0
   maxDifficulty: string = ''
   distance: string = ''
   posts: any
   routes: array = []
   newProject: object = {}
   savedRoutes: array = []
+  maxKey: number = 0
+  localStorageKeyArray: array = []
   readonly ROOT_URL = ``
 
 
@@ -55,16 +58,27 @@ export class FindComponent implements OnInit {
   getLocation(event: any){
     this.location = event.target.value
   }
+
   addRoute(event: any){
+    this.maxKey++
     this.newProject.name = this.routes[0].name
     this.newProject.grade = this.routes[0].rating
-    console.log(this.newProject)
+    this.newProject.url = this.routes[0].url
     this.savedRoutes.push(this.newProject)
-    localStorage.setItem(1, JSON.stringify(this.savedRoutes))
+
+    localStorage.setItem(this.maxKey, JSON.stringify(this.savedRoutes))
   }
 
 
   ngOnInit() {
+    for (let key in localStorage){
+      if (key % 2 == 0 || key % 2 == 1){
+        this.localStorageKeyArray.push(key)
+        console.log(this.localStorageKeyArray)
+        this.maxKey = Math.max(...this.localStorageKeyArray)
+        console.log('maxKey: ', this.maxKey)
+      }
+    }
   }
 
 }
