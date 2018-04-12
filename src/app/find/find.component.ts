@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
+import { DataService } from '../data.service'
 
 
 @Component({
@@ -9,6 +10,7 @@ import { HttpClient } from '@angular/common/http'
 })
 export class FindComponent implements OnInit {
 
+  itemCount: number
   apiKey: string = '111877272-0be5e5bf0133d67a6e691eb8772a4fde'
   url: string = 'https://www.mountainproject.com/data/get-routes-for-lat-lon?lat='
   buttonText: string = 'find routes'
@@ -18,9 +20,9 @@ export class FindComponent implements OnInit {
   maxDifficulty: string = '5.12'
   distance: string = '20'
   posts: any
-  routes: array = []
+  routes = []
   newProject: object = {}
-  savedRoutes: array = []
+  savedRoutes = []
   maxKey: number = 0
   localStorageKeyArray: array = []
   title: string = 'My first AGM project';
@@ -29,19 +31,17 @@ export class FindComponent implements OnInit {
   lng: number = -105.25
   lat: number = 40.03
 
-  readonly ROOT_URL = ``
+  readonly ROOT_URL = 'https://www.mountainproject.com/data/get-routes-for-lat-lon?lat='
 
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private _data: DataService) {}
 
   getRandom(num){
     return Math.floor(Math.random() * Math.floor(num))
   }
 
   getRoutes() {
-
-    this.ROOT_URL = `${this.url}${this.latString}&lon=${this.lngString}&maxDistance=${this.distance}&minDiff=${this.minDifficulty}&maxDiff=${this.maxDifficulty}&key=${this.apiKey}`
-    console.log(this.ROOT_URL)
+    this.ROOT_URL += `${this.latString}&lon=${this.lngString}&maxDistance=${this.distance}&minDiff=${this.minDifficulty}&maxDiff=${this.maxDifficulty}&key=${this.apiKey}`
     this.posts = this.http.get(this.ROOT_URL)
     .subscribe(
       (data:any[]) => {
@@ -73,22 +73,22 @@ export class FindComponent implements OnInit {
 
   addRoute(event: any){
     this.maxKey++
+    this.newProject.number = this.maxKey
     this.newProject.name = this.routes[0].name
     this.newProject.grade = this.routes[0].rating
     this.newProject.url = this.routes[0].url
     this.savedRoutes.push(this.newProject)
-
     localStorage.setItem(this.maxKey, JSON.stringify(this.savedRoutes))
+    console.log(this.newProject)
   }
 
 
   ngOnInit() {
+
     for (let key in localStorage){
       if (key % 2 == 0 || key % 2 == 1){
         this.localStorageKeyArray.push(key)
-        console.log(this.localStorageKeyArray)
         this.maxKey = Math.max(...this.localStorageKeyArray)
-        console.log('maxKey: ', this.maxKey)
       }
     }
   }

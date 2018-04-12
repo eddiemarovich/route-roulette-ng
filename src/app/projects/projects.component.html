@@ -1,12 +1,15 @@
 <div class="clear-list">
-  <button class="clear-all" type= "button" (click)= "removeRoute()" >remove all</button>
+  <input type="text" class="input" name="route-to-remove" placeholder="enter number of route" (keyup)="getRouteName($event)">
+  <button class="clear-all" type= "button" (click)= "removeRoute($event)" >remove all</button>
 </div>
 <div class="list-of-routes">
-  <ul *ngFor= "let route of routeList">
+  <ul *ngFor= "let route of routeList" >
     <li>
-      <button class= "remove-button ">X</button>
+      <div class="route-number">
+        {{route.number}}
+      </div>
       <div class="route-description">
-        {{route.name }} {{route.grade}}<br><a href="{{route.url}}" target="_blank">{{route.url}}</a>
+         {{route.name}} {{route.grade}}<br><a href="{{route.url}}" target="_blank">{{route.url}}</a>
       </div>
     </li>
   </ul>
