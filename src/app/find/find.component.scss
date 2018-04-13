@@ -4,6 +4,10 @@
   width: 97.5%;
 
 }
+.input-containers {
+  display: flex;
+  flex-direction: row;
+}
 .map-container {
   display: flex;
   justify-content: center;

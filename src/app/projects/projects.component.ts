@@ -11,8 +11,7 @@ export class ProjectsComponent implements OnInit {
   tempObj: object = {}
   routeList = []
   routeToRemove: string = ''
-  keyList = []
-  count: number = 0
+  count:any = 1
 
   constructor() { }
 
@@ -20,22 +19,34 @@ export class ProjectsComponent implements OnInit {
     for (let i = 0; i < this.routeList.length; i++){
       if (this.routeList[i].number == this.routeToRemove){
         this.routeList.splice(i, 1)
-        console.log(this.routeList)
+        localStorage.clear()
       }
+      if (this.routeList[i].number > this.routeToRemove){
+        this.routeList[i].number--
+      }
+    }
+    for (let i = 0; i < this.routeList.length; i++){
+      localStorage.setItem(this.count, JSON.stringify(this.routeList[i]))
+      this.count++
     }
   }
 
   getRouteName(){
-    this.routeToRemove = event.target.value
+    if (event.target.value.length > 0){
+      this.routeToRemove = event.target.value
+    }
   }
 
 
   ngOnInit() {
-    for (let key in localStorage){
-      if (key % 2 == 0 || key % 2 == 1){
+    for (var key in localStorage){
+      if (parseInt(key) % 2 ==1 || parseInt(key) % 2 == 0){
         this.routeObj[key] = JSON.parse(localStorage[key])
-        this.routeList.push(this.routeObj[key][0])
-        this.keyList.push(parseInt(key))
+        console.log(this.routeObj)
+        this.routeList.push(this.routeObj[key])
+        console.log(this.routeList)
       }
+
     }
   }
+}
