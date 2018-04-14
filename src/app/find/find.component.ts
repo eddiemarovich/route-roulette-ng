@@ -48,15 +48,12 @@ export class FindComponent implements OnInit {
     this.posts = this.http.get(this.ROOT_URL)
       .subscribe (
       (data) => {
-        console.log(data['routes'])
         this.routesFromMP = []
         for (let i = 0; i < 1; i++) {
             let num = this.getRandom(data['routes'].length + 1)
             data['routes'].splice(num, 1)
             this.routesFromMP.push(data['routes'][num])
-
         }
-        console.log(this.routesFromMP)
       }
     )
   }
@@ -89,7 +86,6 @@ export class FindComponent implements OnInit {
     this.savedRoutes.push(this.newProject)
     this.stringKey = this.maxKey.toString()
     localStorage.setItem(this.stringKey, JSON.stringify(this.newProject))
-    console.log(this.newProject)
   }
 
 
