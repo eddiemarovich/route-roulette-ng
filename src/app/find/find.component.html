@@ -1,32 +1,25 @@
 <div class="parent-container color-dark">
-  <div class="input-container">
-    <div class= "container color-dark">
-      <div class="input-containers">
-        <div class="col">
-          <p>How many miles are you willing to drive?</p>
-          <input type="text" class="criteria" name="location" placeholder="e.g.: 20" (keyup)="getDistance($event)">
-        </div>
-        <div class="col">
-          <p>What difficulty are you looking for?</p>
-          <input type="text" class="criteria" name="location" placeholder="Min. difficulty e.g.: 5.10b" (keyup)="getMinDifficulty($event)">
-          <input type="text" class="criteria" name="location" placeholder="Max. difficulty e.g.: 5.11b" (keyup)="getMaxDifficulty($event)">
-        </div>
-      </div>
-      <div class="col">
-        <p>Where you at?</p>
-        <agm-map [latitude]="lat" [longitude]="lng" (mapClick)="onChooseLocation($event)">
-           <agm-marker [latitude]="lat" [longitude]="lng" ></agm-marker>
-        </agm-map>
-      </div>
+  <div class="input-containers">
+    <div class="col">
+      <p>How many miles are you willing to drive?</p>
+      <input type="text" class="criteria" name="location" placeholder="e.g.: 20" (keyup)="getDistance($event)">
+    </div>
+    <div class="col">
+      <p>What difficulty are you looking for?</p>
+      <input type="text" class="criteria" name="location" placeholder="Min. difficulty e.g.: 5.10b" (keyup)="getMinDifficulty($event)">
+      <input type="text" class="criteria" name="location" placeholder="Max. difficulty e.g.: 5.11b" (keyup)="getMaxDifficulty($event)">
     </div>
   </div>
-  <div class="button-and-result">
-    <div class="submit color-dark">
-      <button class="find-button" (click)= "getRoutes($event)">Find Routes</button>
+  <div class="button-map-result">
+    <div class="col">
+      <p>Where you at?</p>
+      <agm-map [latitude]="lat" [longitude]="lng" (mapClick)="onChooseLocation($event)">
+         <agm-marker [latitude]="lat" [longitude]="lng" ></agm-marker>
+      </agm-map>
     </div>
     <div class="routes-container">
       <ul class="routes-list color-dark" *ngFor= "let route of routes" >
-        <div class="route-description" >
+        <div class="route-description">
           <li >
             <div class= "name-grade">
               {{route.name}} {{route.rating}}<br>{{route.stars}} stars<br>{{route.location[2]}}<br>{{route.url}}<br><button class="save-button" (click)="addRoute($event)">add to projects?</button>
@@ -34,6 +27,9 @@
           </li>
         </div>
       </ul>
+      <div class="submit color-dark">
+        <button class="find-button" (click)= "getRoutes($event)">Find Routes</button>
+      </div>
     </div>
 
   </div>

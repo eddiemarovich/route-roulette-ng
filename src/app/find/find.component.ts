@@ -32,6 +32,7 @@ export class FindComponent implements OnInit {
   lngString: string = '40.03'
   lng: number = -105.25
   lat: number = 40.03
+  stringKey: string = ''
 
   ROOT_URL = 'https://www.mountainproject.com/data/get-routes-for-lat-lon?lat='
 
@@ -80,7 +81,8 @@ export class FindComponent implements OnInit {
     this.newProject[this.routeGrade] = this.routes[0].rating
     this.newProject[this.routeUrl] = this.routes[0].url
     this.savedRoutes.push(this.newProject)
-    localStorage.setItem(parseInt(this.maxKey), JSON.stringify(this.newProject))
+    this.stringKey = this.maxKey.toString()
+    localStorage.setItem(this.stringKey, JSON.stringify(this.newProject))
     console.log(this.newProject)
   }
 

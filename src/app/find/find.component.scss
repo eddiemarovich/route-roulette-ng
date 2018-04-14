@@ -1,12 +1,20 @@
 .parent-container {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   width: 97.5%;
 
+}
+.button-map-result {
+  display: flex;
+  flex-direction: row;
+}
+.input-container {
+  width: 100%;
 }
 .input-containers {
   display: flex;
   flex-direction: row;
+  justify-content: space-around;
 }
 .map-container {
   display: flex;
@@ -28,7 +36,6 @@ agm-map {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  padding: 15px;
 
 }
 .criteria {
@@ -45,6 +52,8 @@ agm-map {
   padding: .3em 1em;
 }
 .routes-container {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   margin-top: 12px;
   margin-left: 10px;
@@ -58,6 +67,12 @@ agm-map {
   height: 50px;
   font-size: 25;
   margin: 3px;
+}
+.save-button:hover {
+  background: #5FB5ED;
+}
+.save-button:active {
+  transform: translateY(4px);
 }
 .color-dark {
   background: #2885C4;
@@ -77,7 +92,7 @@ agm-map {
   background-color: #2E9Ce6;
   border-radius: 5px;
   width: 80vh;
-
+  margin-top: 20px;
 }
 
 .find-button {
@@ -90,6 +105,9 @@ agm-map {
   border: 0;
   font-size: 26px;
   font-family: "Comfortaa"
+}
+.find-button:hover{
+  background: #5FB5ED;
 }
 input.txt {
   border: 0;

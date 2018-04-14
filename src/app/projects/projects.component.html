@@ -1,9 +1,9 @@
 <div class="clear-list">
   <input type="text" class="input" name="route-to-remove" placeholder="enter number of route" (keyup)="getRouteName($event)">
-  <button class="clear-all" type= "button" (click)= "removeRoute($event)" >remove all</button>
+ <button class="clear-all" type= "button" (click)= "removeRoute($event)" >remove all</button>
 </div>
 <div class="list-of-routes">
-  <ul *ngFor= "let route of routeList" >
+  <ul *ngFor= "let route of routeList; let x of xArr" >
     <li>
       <div class="route-number">
         {{route.number}}
