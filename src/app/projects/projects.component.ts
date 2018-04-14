@@ -34,7 +34,7 @@ export class ProjectsComponent implements OnInit {
   }
 
   getRouteName(){
-    this.routeToRemove = event.target.value
+    this.routeToRemove = event.target['value']
   }
 
 

@@ -18,7 +18,7 @@ export class FindComponent implements OnInit {
   maxDifficulty: string = '5.12'
   distance: string = '20'
   posts: any
-  routes: any
+  routesFromMP: any
   newProject: object = {}
   routeNumber: string = 'number'
   routeName: string = 'name'
@@ -43,17 +43,20 @@ export class FindComponent implements OnInit {
     return Math.floor(Math.random() * Math.floor(num))
   }
 
-  getRoutes(event: any) {
+  getRoutes(event) {
     this.ROOT_URL += `${this.latString}&lon=${this.lngString}&maxDistance=${this.distance}&minDiff=${this.minDifficulty}&maxDiff=${this.maxDifficulty}&key=${this.apiKey}`
     this.posts = this.http.get(this.ROOT_URL)
-    .subscribe(
+      .subscribe (
       (data) => {
-        this.routes = []
+        console.log(data['routes'])
+        this.routesFromMP = []
         for (let i = 0; i < 1; i++) {
-            let num = this.getRandom(data.routes.length + 1)
-            data.routes.splice(num, 1)
-            this.routes.push(data.routes[num])
+            let num = this.getRandom(data['routes'].length + 1)
+            data['routes'].splice(num, 1)
+            this.routesFromMP.push(data['routes'][num])
+
         }
+        console.log(this.routesFromMP)
       }
     )
   }
@@ -61,12 +64,15 @@ export class FindComponent implements OnInit {
   getMinDifficulty(event: any){
     this.minDifficulty = event.target.value
   }
+
   getMaxDifficulty(event: any){
     this.maxDifficulty = event.target.value
   }
+
   getDistance(event: any){
     this.distance = event.target.value
   }
+
   onChooseLocation(event){
     this.latString = event.coords.lat
     this.lngString = event.coords.lng
@@ -77,9 +83,9 @@ export class FindComponent implements OnInit {
   addRoute(event: any){
     this.maxKey++
     this.newProject[this.routeNumber] = this.maxKey
-    this.newProject[this.routeName] = this.routes[0].name
-    this.newProject[this.routeGrade] = this.routes[0].rating
-    this.newProject[this.routeUrl] = this.routes[0].url
+    this.newProject[this.routeName] = this.routesFromMP[0].name
+    this.newProject[this.routeGrade] = this.routesFromMP[0].rating
+    this.newProject[this.routeUrl] = this.routesFromMP[0].url
     this.savedRoutes.push(this.newProject)
     this.stringKey = this.maxKey.toString()
     localStorage.setItem(this.stringKey, JSON.stringify(this.newProject))
