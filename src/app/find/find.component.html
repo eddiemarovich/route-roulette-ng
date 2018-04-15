@@ -6,14 +6,14 @@
     </div>
     <div class="col">
       <p>What difficulty are you looking for?</p>
-      <input type="text" class="criteria" name="location" placeholder="Min. difficulty e.g.: 5.10b" (keyup)="getMinDifficulty($event)">
-      <input type="text" class="criteria" name="location" placeholder="Max. difficulty e.g.: 5.11b" (keyup)="getMaxDifficulty($event)">
+      <input type="text" class="criteria" name="location" placeholder="Min. difficulty e.g.: 5.10b"  required (keyup)="getMinDifficulty($event)">
+      <input type="text" class="criteria" name="location" placeholder="Max. difficulty e.g.: 5.11b" required (keyup)="getMaxDifficulty($event)">
     </div>
   </div>
   <div class="button-map-result">
     <div class="col">
-      <p>Where you at?</p>
-      <agm-map [latitude]="lat" [longitude]="lng" (mapClick)="onChooseLocation($event)">
+      <p>Where you at? Click the map to set your location.</p>
+      <agm-map [latitude]="lat" [longitude]="lng" [zoom]= "1" (mapClick)="onChooseLocation($event)">
          <agm-marker [latitude]="lat" [longitude]="lng" ></agm-marker>
       </agm-map>
     </div>
@@ -22,7 +22,7 @@
         <div class="route-description">
           <li >
             <div class= "name-grade">
-              {{route.name}} {{route.rating}}<br>{{route.stars}} stars<br>{{route.location[2]}}<br>{{route.url}}<br><button class="save-button" (click)="addRoute($event)">add to projects?</button>
+              {{route.name}} {{route.rating}}<br>{{route.stars}} stars<br>{{route.location[2]}}<br><a class= "route-url" href="{{route.url}}" target="_blank">{{route.url}}</a><br><button class="save-button" (click)="addRoute($event)">add to projects?</button>
             </div>
           </li>
         </div>

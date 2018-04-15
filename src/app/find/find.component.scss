@@ -88,6 +88,9 @@ agm-map {
   margin: 2px;
   margin-left: 5px;
 }
+.route-url {
+  font-size: 14px;
+}
 .route-description {
   background-color: #2E9Ce6;
   border-radius: 5px;
@@ -115,4 +118,7 @@ input.txt {
   width: 80%;
   margin-bottom: 2em;
   border-radius: 5px;
+}
+a {
+  font-size: 18;
 }

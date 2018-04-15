@@ -28,10 +28,10 @@ export class FindComponent implements OnInit {
   maxKey: number = 0
   localStorageKeyArray= []
   title: string = 'My first AGM project';
-  latString: string = '-105.25'
-  lngString: string = '40.03'
-  lng: number = -105.25
-  lat: number = 40.03
+  latString: string = ''
+  lngString: string = ''
+  lng: number
+  lat: number
   stringKey: string = ''
 
   ROOT_URL = 'https://www.mountainproject.com/data/get-routes-for-lat-lon?lat='
