@@ -7,35 +7,48 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  background: #2F86C2;
-  border-radius: 5px;
+  color: black;
   height: 75px;
   margin-left: 10px;
  }
+ .input {
+   border:solid black 2px ;
+   margin-right: 2.5px;
+   padding: 3px;
+   font-family: "Josefin Sans";
+   font-size: 18px;
+   width: 18vh;
+ }
+
 .remove-button {
    margin-left: 10px;
    justify-content: flex-end;
    background: #5FB5ED;
    border: 0;
    color: #fff;
-   border-radius: 2px;
  }
  .clear-list {
    display: flex;
    justify-content: center;
-   margin-right: 70px;
    margin-bottom: 15px;
-
  }
+
  .clear-all {
-   background: #2F86C2;
-   border: 0;
+   margin-left: 2.5px;
+   border: solid black 2px;
    height: 40px;
    width: 120px;
-   border-radius: 5px;
-   color: #fff;
-   font-family: "Comfortaa";
+   font-family: "Josefin Sans";
    font-size: 18px;
+ }
+ .clear-all:hover{
+   height: 40px;
+   width: 120px;
+   font-family: "Josefin Sans";
+   font-size: 18px;
+   margin-left: 2.5px;
+   background: black;
+   color: #fff
  }
  .route-number {
    font-size: 20px;
@@ -43,7 +56,12 @@
  }
 .route-description {
   margin-left: 15px;
+  color: black;
 }
 a {
   font-size: 14px;
+  color: black;
+}
+.route {
+  border-radius: black solid 2px;
 }

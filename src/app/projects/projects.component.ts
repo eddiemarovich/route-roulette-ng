@@ -43,6 +43,7 @@ export class ProjectsComponent implements OnInit {
       if (parseInt(key) % 2 == 1 || parseInt(key) % 2 == 0) {
         this.routeObj = JSON.parse(localStorage[key])
         this.routeList.push(this.routeObj)
+        this.routeList.sort((a,b) => a - b)
       }
     }
   }

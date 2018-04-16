@@ -1,11 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
-@import url('https://fonts.googleapis.com/css?family=Comfortaa');
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans');
 
 body {
-  background: #2E9Ce6;
-  padding: 3em;
-  font-family: 'Comfortaa', 'Arial';
-  color: #fff;
+  font-family: 'Josefin Sans', 'Arial';
 }
 ul {
   list-style-type: none;
@@ -15,6 +12,7 @@ ul {
 ul li {
   display: inline;
   margin-right: 30px;
+  border: solid black 2px;
 }
 ul li a{
   font-size: 1.5em;

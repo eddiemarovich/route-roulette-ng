@@ -44,18 +44,22 @@ export class FindComponent implements OnInit {
   }
 
   getRoutes(event) {
-    this.ROOT_URL += `${this.latString}&lon=${this.lngString}&maxDistance=${this.distance}&minDiff=${this.minDifficulty}&maxDiff=${this.maxDifficulty}&key=${this.apiKey}`
-    this.posts = this.http.get(this.ROOT_URL)
-      .subscribe (
-      (data) => {
-        this.routesFromMP = []
-        for (let i = 0; i < 1; i++) {
-            let num = this.getRandom(data['routes'].length + 1)
-            data['routes'].splice(num, 1)
-            this.routesFromMP.push(data['routes'][num])
+    if (this.latString !== ''){
+      this.ROOT_URL += `${this.latString}&lon=${this.lngString}&maxDistance=${this.distance}&minDiff=${this.minDifficulty}&maxDiff=${this.maxDifficulty}&key=${this.apiKey}`
+      this.posts = this.http.get(this.ROOT_URL)
+        .subscribe (
+        (data) => {
+          this.routesFromMP = []
+          for (let i = 0; i < 1; i++) {
+              let num = this.getRandom(data['routes'].length + 1)
+              data['routes'].splice(num, 1)
+              this.routesFromMP.push(data['routes'][num])
+          }
         }
-      }
-    )
+      )
+    }else {
+      this.routesFromMP.push('Oops! Make sure to enter complete all fields')
+    }
   }
 
   getMinDifficulty(event: any){
