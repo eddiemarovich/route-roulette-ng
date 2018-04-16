@@ -3,7 +3,7 @@ webpackJsonp(["styles"],{
 /***/ "./node_modules/raw-loader/index.js!./node_modules/postcss-loader/lib/index.js??embedded!./node_modules/sass-loader/lib/loader.js??ref--8-3!./src/styles.scss":
 /***/ (function(module, exports) {
 
-module.exports = "\n@import url(\"https://fonts.googleapis.com/css?family=Josefin+Sans\");\n/* You can add global styles to this file, and also import other style files */\nbody {\n  font-family: 'Josefin Sans', 'Arial'; }\nul {\n  list-style-type: none;\n  margin: 0 0 2em 0;\n  padding: 0; }\nul li {\n  display: inline;\n  margin-right: 30px;\n  border: solid black 2px; }\nul li a {\n  font-size: 1.5em; }\na {\n  color: #fff;\n  text-decoration: none; }\n"
+module.exports = "\n@import url(\"https://fonts.googleapis.com/css?family=Josefin+Sans\");\n/* You can add global styles to this file, and also import other style files */\nbody {\n  font-family: 'Josefin Sans', 'Arial'; }\na {\n  color: #fff;\n  text-decoration: none; }\n"
 
 /***/ }),
 
