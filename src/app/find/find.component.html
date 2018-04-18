@@ -15,7 +15,7 @@
   <div class="map-and-result">
     <div class="map-container">
       <p>Click the map to set your location.</p>
-      <agm-map [latitude]="lat" [longitude]="lng" [zoom]="1" (mapClick)="onChooseLocation($event)">
+      <agm-map [latitude]="lat" [longitude]="lng" [zoom]="4" (mapClick)="onChooseLocation($event)">
         <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
       </agm-map>
     </div>

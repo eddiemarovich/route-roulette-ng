@@ -28,13 +28,11 @@ export class FindComponent implements OnInit {
   maxKey: number = 0
   localStorageKeyArray= []
   title: string = 'My first AGM project';
-  latString: string = ''
-  lngString: string = ''
-  lng: number
-  lat: number
+  lng: number = -105.2705
+  lat: number = 40.0150
   stringKey: string = ''
 
-  ROOT_URL = 'https://www.mountainproject.com/data/get-routes-for-lat-lon?lat='
+  ROOT_URL = 'https://www.mountainproject.com/data/get-routes-for-lat-lon?maxResults=500&lat='
 
 
   constructor(private http: HttpClient) {}
@@ -44,8 +42,7 @@ export class FindComponent implements OnInit {
   }
 
   getRoutes(event) {
-    if (this.latString !== ''){
-      this.ROOT_URL += `${this.latString}&lon=${this.lngString}&maxDistance=${this.distance}&minDiff=${this.minDifficulty}&maxDiff=${this.maxDifficulty}&key=${this.apiKey}`
+      this.ROOT_URL += `${this.lat}&lon=${this.lng}&maxDistance=${this.distance}&minDiff=${this.minDifficulty}&maxDiff=${this.maxDifficulty}&key=${this.apiKey}`
       this.posts = this.http.get(this.ROOT_URL)
         .subscribe (
         (data) => {
@@ -57,9 +54,6 @@ export class FindComponent implements OnInit {
           }
         }
       )
-    }else {
-      this.routesFromMP.push('Oops! Make sure to enter complete all fields')
-    }
   }
 
   getMinDifficulty(event: any){
@@ -75,8 +69,6 @@ export class FindComponent implements OnInit {
   }
 
   onChooseLocation(event){
-    this.latString = event.coords.lat
-    this.lngString = event.coords.lng
     this.lat = parseFloat(event.coords.lat)
     this.lng = parseFloat(event.coords.lng)
   }
